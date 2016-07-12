@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		/*
+			Is craneId global or local on line 8 (25)? **Global, because there is no var in front of it. in the function.
+
+			Why is isViable not global on line 18 (35)? **Because it is defined in the function with 	the var statement.
+
+			Put into english what makes a "viable" crane by reading through the function isViableCrane. ** An array of cranes are created using the createCrane Function, with craneId, height and length for each crane.  isViableCrane compares the height of each crane to the length and if the length is greater then isViable is true, if not it's false.  
+
+		*/
+
+		//Indexes for the crane array
+		var ID = 0;
+		var HEIGHT = 1;
+		var LENGTH = 2;
+
+		function createCrane(boomHeight, hoistLength) {
+			craneId = craneId + 1;  //Global variable
+			return [
+				craneId,
+				boomHeight,
+				hoistLength
+			];
+		}
+
+		function isViableCrane(crane) {
+			if (crane[LENGTH] > crane[HEIGHT]) {
+				isViable = true;  //local as it is created within the function on line 40.
+			} else {
+				isViable = false;
+			}
+			var isViable;
+			return isViable;
+		}
+
+		var craneId = 0;
+		var cranes = [
+			createCrane(10, 15),
+			createCrane(12, 5),
+			createCrane(7, 10)
+		];
+
+		for (var c in cranes) {
+			if (isViableCrane(cranes[c])) {
+				console.log(cranes[c]);
+			}
+		}
+	</script>
+</body>
+
+</html>
